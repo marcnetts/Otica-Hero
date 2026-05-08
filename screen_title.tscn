@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://55d62262thhc"]
+
+[ext_resource type="Script" uid="uid://vvpovb7vn7uc" path="res://screen_title.gd" id="1_lavik"]
+[ext_resource type="Texture2D" uid="uid://toufnt0bvceo" path="res://images/otica dez 2.png" id="2_lavik"]
+[ext_resource type="Texture2D" uid="uid://bl0ptufao8vs5" path="res://images/sprite thuthcucao banner.png" id="3_g7li3"]
+
+[sub_resource type="FontFile" id="FontFile_05l2w"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/45/0/ascent = 0.0
+cache/0/45/0/descent = 0.0
+cache/0/45/0/underline_position = 0.0
+cache/0/45/0/underline_thickness = 0.0
+cache/0/45/0/scale = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hafda"]
+bg_color = Color(1, 0.7411765, 0.49803922, 1)
+skew = Vector2(0.2, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(5, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpml5"]
+bg_color = Color(1, 0.7411765, 0.49803922, 1)
+skew = Vector2(0.2, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[node name="Title Screen" type="Control" unique_id=2130610540 node_paths=PackedStringArray("txtMaiorPontuacao")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lavik")
+txtMaiorPontuacao = NodePath("txt_maior_pontos_valor")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1617209098]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="MarginContainer" unique_id=1701575176]
+layout_mode = 2
+texture = ExtResource("2_lavik")
+
+[node name="SpriteThuthcucaoBanner" type="Sprite2D" parent="." unique_id=1366168425]
+position = Vector2(756, 446.37503)
+scale = Vector2(0.7730326, 0.7730326)
+texture = ExtResource("3_g7li3")
+
+[node name="button_start" type="Button" parent="." unique_id=657185521]
+layout_mode = 0
+offset_left = 174.61292
+offset_top = 314.0
+offset_right = 474.6129
+offset_bottom = 414.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("FontFile_05l2w")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_hafda")
+text = "JOGAR"
+
+[node name="button_credits" type="Button" parent="." unique_id=1237632083]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 439.0
+offset_right = 448.0
+offset_bottom = 539.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("FontFile_05l2w")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_tpml5")
+text = "CRÉDITOS"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=658437778]
+layout_mode = 0
+offset_top = 101.0
+offset_right = 1152.0
+offset_bottom = 238.0
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/normal_font_size = 100
+text = "ÓTICA HERO"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="txt_maior_pontos_str" type="RichTextLabel" parent="." unique_id=805789929]
+layout_mode = 0
+offset_left = 542.0
+offset_top = 24.0
+offset_right = 948.0
+offset_bottom = 88.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 45
+text = " Maior Pontuação:"
+fit_content = true
+autowrap_mode = 0
+
+[node name="txt_maior_pontos_valor" type="RichTextLabel" parent="." unique_id=1716420591]
+layout_mode = 0
+offset_left = 948.0
+offset_top = 24.0
+offset_right = 1064.0
+offset_bottom = 88.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 45
+text = "0000"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[connection signal="pressed" from="button_start" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="button_credits" to="." method="_on_button_credits_pressed"]

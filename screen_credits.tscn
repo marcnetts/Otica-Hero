@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://ch0ay6lbmcp5w"]
+
+[ext_resource type="Script" uid="uid://vvpovb7vn7uc" path="res://screen_title.gd" id="1_dm20p"]
+[ext_resource type="Texture2D" uid="uid://toufnt0bvceo" path="res://images/otica dez 2.png" id="2_4hrak"]
+[ext_resource type="Texture2D" uid="uid://bl0ptufao8vs5" path="res://images/sprite thuthcucao banner.png" id="3_0bqds"]
+[ext_resource type="Script" uid="uid://yf7x5vfqm1f8" path="res://screen_game_button_exit.gd" id="4_4hrak"]
+
+[sub_resource type="FontFile" id="FontFile_05l2w"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/45/0/ascent = 0.0
+cache/0/45/0/descent = 0.0
+cache/0/45/0/underline_position = 0.0
+cache/0/45/0/underline_thickness = 0.0
+cache/0/45/0/scale = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpml5"]
+bg_color = Color(1, 0.7411765, 0.49803922, 1)
+skew = Vector2(0.2, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[node name="Credits Screen" type="Control" unique_id=2130610540 node_paths=PackedStringArray("txtMaiorPontuacao")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dm20p")
+txtMaiorPontuacao = NodePath("txt_pontos_valor")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1617209098]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="MarginContainer" unique_id=1701575176]
+layout_mode = 2
+texture = ExtResource("2_4hrak")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1708302257]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1409302775]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1982394781]
+layout_mode = 2
+texture = ExtResource("3_0bqds")
+stretch_mode = 2
+
+[node name="button_menu" type="Button" parent="." unique_id=1237632083]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 513.0
+offset_right = 367.0
+offset_bottom = 613.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("FontFile_05l2w")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_tpml5")
+text = "VOLTAR"
+script = ExtResource("4_4hrak")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=658437778]
+layout_mode = 0
+offset_top = 79.0
+offset_right = 1152.0
+offset_bottom = 216.0
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/normal_font_size = 100
+text = "ÓTICA HERO"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="txt_pontos_str" type="RichTextLabel" parent="." unique_id=805789929]
+layout_mode = 0
+offset_left = 542.0
+offset_top = 24.0
+offset_right = 948.0
+offset_bottom = 88.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 45
+text = " Maior Pontuação:"
+fit_content = true
+autowrap_mode = 0
+
+[node name="txt_pontos_valor" type="RichTextLabel" parent="." unique_id=1716420591]
+layout_mode = 0
+offset_left = 948.0
+offset_top = 24.0
+offset_right = 1064.0
+offset_bottom = 88.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 45
+text = "0000"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="txt_creditos1" type="RichTextLabel" parent="." unique_id=674752943]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 246.0
+offset_right = 1042.0
+offset_bottom = 336.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Criado por [color=lightblue][url=https://www.linkedin.com/in/marcos-zanetti/]Marcos Zanetti[/url][/color]
+Entrada da [color=lightblue][url=https://itch.io/jam/baixada-santista-gj-trabalho]Baixada Santista Game Jam 2026[/url][/color]"
+horizontal_alignment = 1
+
+[node name="txt_creditos2" type="RichTextLabel" parent="." unique_id=394388583]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 350.0
+offset_right = 1042.0
+offset_bottom = 500.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 27
+bbcode_enabled = true
+text = "Música: [color=lightblue][url]https://www.youtube.com/watch?v=t3xJKTJ2ROc[/url][/color]
+Uso de IA: Alguns trechos do código são baseados em resultados (da IA) do Google. A arte de fundo é baseada numa renderização do Gemini sobre São Vicente, depois desenhada por cima."
+horizontal_alignment = 1
+
+[connection signal="pressed" from="button_menu" to="button_menu" method="_on_btn_title_screen_pressed"]

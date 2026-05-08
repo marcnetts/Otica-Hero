@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://n42dtnjf3hl3"]
+
+[ext_resource type="Script" uid="uid://0y60q1r8h41x" path="res://screen_game.gd" id="1_yla3h"]
+[ext_resource type="Script" uid="uid://yf7x5vfqm1f8" path="res://screen_game_button_exit.gd" id="2_j7yda"]
+[ext_resource type="Texture2D" uid="uid://bl0ptufao8vs5" path="res://images/sprite thuthcucao banner.png" id="2_norob"]
+[ext_resource type="Texture2D" uid="uid://toufnt0bvceo" path="res://images/otica dez 2.png" id="2_t1xku"]
+[ext_resource type="Texture2D" uid="uid://3g656qi02nnn" path="res://images/caixa_som.png" id="4_ka0ya"]
+[ext_resource type="Script" uid="uid://w34dklkutb7b" path="res://screen_game_character.gd" id="6_6mti6"]
+[ext_resource type="Texture2D" uid="uid://di0mljoevbun5" path="res://images/speech_bubble.png" id="7_6mti6"]
+[ext_resource type="AudioStream" uid="uid://van6780o0g06" path="res://music/palma_da_bota_undertale.mp3" id="8_t1xku"]
+
+[sub_resource type="FontFile" id="FontFile_05l2w"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/45/0/ascent = 0.0
+cache/0/45/0/descent = 0.0
+cache/0/45/0/underline_position = 0.0
+cache/0/45/0/underline_thickness = 0.0
+cache/0/45/0/scale = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpml5"]
+bg_color = Color(1, 0.7411765, 0.49803922, 1)
+skew = Vector2(0.2, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[node name="Game Screen" type="Control" unique_id=2130610540 node_paths=PackedStringArray("txt_direction_label", "txt_score_label", "txt_time_label", "gameTimer", "wrongMoveTimer", "audio", "character", "characterSprite")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yla3h")
+txt_direction_label = NodePath("txt_direction")
+txt_score_label = NodePath("txt_pontos_valor")
+txt_time_label = NodePath("txt_tempo_valor")
+gameTimer = NodePath("timer_game")
+wrongMoveTimer = NodePath("timer_wrong_play")
+audio = NodePath("AudioStreamPlayer")
+tempo = 50
+character = NodePath("Personagem")
+characterSprite = NodePath("Personagem/SpriteThuthcucaoBanner")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1701575176]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_t1xku")
+
+[node name="txt_tempo_str" type="RichTextLabel" parent="." unique_id=1364598718]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 24.0
+offset_right = 564.0
+offset_bottom = 88.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 45
+text = "Tempo:"
+horizontal_alignment = 1
+
+[node name="txt_tempo_valor" type="RichTextLabel" parent="." unique_id=1533578408]
+layout_mode = 0
+offset_left = 575.0
+offset_top = 24.0
+offset_right = 643.28564
+offset_bottom = 88.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 45
+text = "50"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="txt_pontos_str" type="RichTextLabel" parent="." unique_id=195961701]
+layout_mode = 0
+offset_left = 762.0
+offset_top = 24.0
+offset_right = 947.0
+offset_bottom = 88.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 45
+text = " Pontos:"
+
+[node name="txt_pontos_valor" type="RichTextLabel" parent="." unique_id=235920501]
+layout_mode = 0
+offset_left = 948.0
+offset_top = 24.0
+offset_right = 1064.0
+offset_bottom = 88.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 45
+text = "0000"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="button_exit" type="Button" parent="." unique_id=1237632083]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 23.0
+offset_right = 196.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("FontFile_05l2w")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_tpml5")
+text = "Menu"
+script = ExtResource("2_j7yda")
+
+[node name="txt_direction" type="RichTextLabel" parent="." unique_id=894730844]
+layout_mode = 0
+offset_left = 633.0
+offset_top = 345.0
+offset_right = 761.0
+offset_bottom = 428.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 66
+text = "↓"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="CaixaSom" type="Sprite2D" parent="." unique_id=1731358124]
+position = Vector2(618, 564)
+scale = Vector2(0.14583336, 0.14583334)
+texture = ExtResource("4_ka0ya")
+
+[node name="Personagem" type="CharacterBody2D" parent="." unique_id=714427390 node_paths=PackedStringArray("characterSprite")]
+position = Vector2(867, 522)
+motion_mode = 1
+script = ExtResource("6_6mti6")
+characterSprite = NodePath("SpriteThuthcucaoBanner")
+metadata/current_direction_to_score = Vector2(0, 0)
+
+[node name="SpriteThuthcucaoBanner" type="Sprite2D" parent="Personagem" unique_id=2079178106]
+scale = Vector2(0.34788868, 0.34788868)
+texture = ExtResource("2_norob")
+
+[node name="SpeechBubble" type="Sprite2D" parent="." unique_id=875338300]
+position = Vector2(698, 412)
+texture = ExtResource("7_6mti6")
+
+[node name="timer_game" type="Timer" parent="." unique_id=2077056384]
+
+[node name="timer_wrong_play" type="Timer" parent="." unique_id=761873712]
+wait_time = 0.8
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1417042787]
+stream = ExtResource("8_t1xku")
+
+[connection signal="pressed" from="button_exit" to="button_exit" method="_on_btn_title_screen_pressed"]
