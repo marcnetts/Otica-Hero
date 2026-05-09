@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://di0mljoevbun5" path="res://images/speech_bubble.png" id="7_6mti6"]
 [ext_resource type="AudioStream" uid="uid://van6780o0g06" path="res://music/palma_da_bota_undertale.mp3" id="8_t1xku"]
 [ext_resource type="AudioStream" uid="uid://yxubraqou68h" path="res://music/freesound_community-metal-whistle-6121 (mp3cut.net).mp3" id="9_ka0ya"]
+[ext_resource type="Texture2D" uid="uid://bqref35uh6ttv" path="res://images/consumidor.png" id="11_ppe3r"]
 
 [sub_resource type="FontFile" id="FontFile_05l2w"]
 subpixel_positioning = 0
@@ -236,4 +237,9 @@ stream = ExtResource("8_t1xku")
 stream = ExtResource("9_ka0ya")
 volume_db = -3.649
 
+[node name="Consumidor" type="Sprite2D" parent="." unique_id=1663356303]
+position = Vector2(-73, 434)
+texture = ExtResource("11_ppe3r")
+
 [connection signal="pressed" from="button_exit" to="button_exit" method="_on_btn_title_screen_pressed"]
+[connection signal="timeout" from="timer_wrong_play" to="." method="_on_timer_wrong_play_timeout"]

@@ -59,7 +59,8 @@ var coresBoasTxt = ['#18ff03', '#4203ff', '#4203ff', '#ff03ff']
 var txtJogadasBoas = ['Boa!', 'Uuia!', 'Nicee', 'Oloco!', '<3', 'Rapaaiiz', 'Fera!', 'Su-ce-sso!']
 
 var floating_text_scene = preload("res://appearing_text_label.tscn")
-var sprite_silhueta = preload("res://styles/sprite_silhueta.tscn")
+var sprite_silhueta = preload("res://sprite_silhueta.tscn")
+var sprite_consumidor = preload("res://sprite_consumidor.tscn")
 
 var posicaoAcimaJogador: Vector2
 var posicaoAcimaCaixaSom = Vector2(697, 351)
@@ -123,14 +124,16 @@ func _process(delta):
 		#//terminar mais aqui
 
 func addScore():
+	comboJogadasBoas += 1
 	score += 10 + (5 if comboJogadasBoas >= 10 else 0)
 	VarGlobais.high_score = max(score, VarGlobais.high_score)
 	txt_score_label.text = "%04d" % score
 	novaDirecao()
-	comboJogadasBoas += 1
 	show_text_above_character('✓', posicaoAcimaCaixaSom, false, 40)
 	if(comboJogadasBoas > 10):
 		show_text_above_character(txtJogadasBoas.pick_random(), posicaoAcimaJogador)
+	if randf() < 0.2:
+		spawn_consumidor()
 
 func wrongMove():
 	wrongMoveTimer.start()
@@ -147,8 +150,6 @@ func show_text_above_character(innerText: String, position: Vector2, wrongMove =
 		
 	text.add_text(innerText)
 	get_tree().current_scene.add_child(text)
-	print(character.position)
-	print(text)
 
 func novaDirecao():
 	current_direction_to_score = dicionarioSemDadoFiltrado(directions_to_score, current_direction_to_score).keys().pick_random()
@@ -164,8 +165,17 @@ func dicionarioSemDadoFiltrado(dicionario_original: Dictionary, dadoexcluido: St
 	return filtered
 
 func _on_timer_pessoas_passando_timeout():
-	if tempo > 0 and randf() < 0.10:
-		var posicaoEsquerda = randf() > 0.5
+	if tempo > 0 and randf() < 0.2:
 		var npcAndando = sprite_silhueta.instantiate()
-		npcAndando.position = Vector2(-100, get_viewport_rect().size.y - 110)
+		npcAndando.posicaoEsquerda = randf() > 0.5
+		npcAndando.position = Vector2(-100 if npcAndando.posicaoEsquerda else get_viewport_rect().size.x + 100, get_viewport_rect().size.y - 110)
 		add_child(npcAndando)
+
+func spawn_consumidor():
+	var npcConsumidor = sprite_consumidor.instantiate()	
+	npcConsumidor.position = Vector2(-73.0, 435.0)
+	npcConsumidor.posicaoDespawnX = 505.0
+	add_child(npcConsumidor)
+
+func _on_timer_wrong_play_timeout() -> void:
+	characterSprite.texture = load("res://images/character/character-idle.png")
