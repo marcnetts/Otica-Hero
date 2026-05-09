@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwe3sqsfq8cy1"
-path="res://.godot/imported/silhueta.png-b5844f060a55a974c4f348abd71807fb.ctex"
+uid="uid://bbus5etmnrcn0"
+path="res://.godot/imported/check.png-cf35f513802b18cdb372dc796091e15c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://silhueta.png"
-dest_files=["res://.godot/imported/silhueta.png-b5844f060a55a974c4f348abd71807fb.ctex"]
+source_file="res://images/check.png"
+dest_files=["res://.godot/imported/check.png-cf35f513802b18cdb372dc796091e15c.ctex"]
 
 [params]
 

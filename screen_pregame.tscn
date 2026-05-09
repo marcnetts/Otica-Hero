@@ -12,37 +12,6 @@ colors = PackedColorArray(1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lavik"]
 gradient = SubResource("Gradient_4hrak")
 
-[sub_resource type="FontFile" id="FontFile_05l2w"]
-cache/0/variation_coordinates = {}
-cache/0/face_index = 0
-cache/0/embolden = 0.0
-cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
-cache/0/spacing_top = 0
-cache/0/spacing_bottom = 0
-cache/0/spacing_space = 0
-cache/0/spacing_glyph = 0
-cache/0/baseline_offset = 0.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/40/0/ascent = 0.0
-cache/0/40/0/descent = 0.0
-cache/0/40/0/underline_position = 0.0
-cache/0/40/0/underline_thickness = 0.0
-cache/0/40/0/scale = 1.0
-cache/0/50/0/ascent = 0.0
-cache/0/50/0/descent = 0.0
-cache/0/50/0/underline_position = 0.0
-cache/0/50/0/underline_thickness = 0.0
-cache/0/50/0/scale = 1.0
-cache/0/45/0/ascent = 0.0
-cache/0/45/0/descent = 0.0
-cache/0/45/0/underline_position = 0.0
-cache/0/45/0/underline_thickness = 0.0
-cache/0/45/0/scale = 1.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hafda"]
 bg_color = Color(1, 0.7411765, 0.49803922, 1)
 skew = Vector2(0.2, 0)
@@ -84,7 +53,6 @@ offset_right = 758.0
 offset_bottom = 614.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = SubResource("FontFile_05l2w")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_hafda")
 theme_override_styles/hover = ExtResource("2_b1q67")
@@ -96,7 +64,7 @@ scale = Vector2(0.8290158, 0.82901555)
 texture = ExtResource("2_6lpl7")
 
 [node name="CaixaSom" type="Sprite2D" parent="." unique_id=1965428831]
-position = Vector2(820.99994, 155)
+position = Vector2(831, 155)
 scale = Vector2(0.14583336, 0.14583334)
 texture = ExtResource("3_b1q67")
 

@@ -5,46 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://toufnt0bvceo" path="res://images/otica dez 2.png" id="2_t1xku"]
 [ext_resource type="StyleBox" uid="uid://bisq6hsber8j5" path="res://styles/style_hover_button.tres" id="3_ox4q0"]
 [ext_resource type="Texture2D" uid="uid://3g656qi02nnn" path="res://images/caixa_som.png" id="4_ka0ya"]
+[ext_resource type="FontFile" uid="uid://dgd5bpwjixfgb" path="res://OpenSans-VariableFont_wdth,wght.ttf" id="5_27ehk"]
 [ext_resource type="Script" uid="uid://w34dklkutb7b" path="res://screen_game_character.gd" id="6_6mti6"]
 [ext_resource type="Texture2D" uid="uid://sip5152gg4d8" path="res://images/character/character-idle.png" id="6_ka0ya"]
 [ext_resource type="Texture2D" uid="uid://di0mljoevbun5" path="res://images/speech_bubble.png" id="7_6mti6"]
 [ext_resource type="AudioStream" uid="uid://van6780o0g06" path="res://music/palma_da_bota_undertale.mp3" id="8_t1xku"]
 [ext_resource type="AudioStream" uid="uid://yxubraqou68h" path="res://music/freesound_community-metal-whistle-6121 (mp3cut.net).mp3" id="9_ka0ya"]
-[ext_resource type="Texture2D" uid="uid://bqref35uh6ttv" path="res://images/consumidor.png" id="11_ppe3r"]
-
-[sub_resource type="FontFile" id="FontFile_05l2w"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/variation_coordinates = {}
-cache/0/face_index = 0
-cache/0/embolden = 0.0
-cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
-cache/0/spacing_top = 0
-cache/0/spacing_bottom = 0
-cache/0/spacing_space = 0
-cache/0/spacing_glyph = 0
-cache/0/baseline_offset = 0.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/40/0/ascent = 0.0
-cache/0/40/0/descent = 0.0
-cache/0/40/0/underline_position = 0.0
-cache/0/40/0/underline_thickness = 0.0
-cache/0/40/0/scale = 1.0
-cache/0/50/0/ascent = 0.0
-cache/0/50/0/descent = 0.0
-cache/0/50/0/underline_position = 0.0
-cache/0/50/0/underline_thickness = 0.0
-cache/0/50/0/scale = 1.0
-cache/0/45/0/ascent = 0.0
-cache/0/45/0/descent = 0.0
-cache/0/45/0/underline_position = 0.0
-cache/0/45/0/underline_thickness = 0.0
-cache/0/45/0/scale = 1.0
+[ext_resource type="Texture2D" uid="uid://cwm527cbvft7y" path="res://images/arrow.png" id="12_27ehk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpml5"]
 bg_color = Color(1, 0.7411765, 0.49803922, 1)
@@ -58,7 +25,7 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_size = 5
 shadow_offset = Vector2(5, 5)
 
-[node name="Game Screen" type="Control" unique_id=2130610540 node_paths=PackedStringArray("txt_direction_label", "txt_score_label", "txt_time_label", "txt_time_timeout", "txt_melhor_pontuacao", "gameTimer", "wrongMoveTimer", "timer_pessoas_passando", "audio_musica", "audio_apito", "button_sair", "character", "characterSprite")]
+[node name="Game Screen" type="Control" unique_id=2130610540 node_paths=PackedStringArray("txt_direction_label", "txt_score_label", "txt_time_label", "txt_time_timeout", "txt_melhor_pontuacao", "gameTimer", "wrongMoveTimer", "timer_pessoas_passando", "audio_musica", "audio_apito", "button_sair", "character", "characterSprite", "arrowSprite")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,6 +47,7 @@ button_sair = NodePath("button_exit")
 tempo = 60
 character = NodePath("Personagem")
 characterSprite = NodePath("Personagem/Character")
+arrowSprite = NodePath("Arrow")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1701575176]
 layout_mode = 0
@@ -181,7 +149,6 @@ offset_right = 196.0
 offset_bottom = 99.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = SubResource("FontFile_05l2w")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_tpml5")
 theme_override_styles/hover = ExtResource("3_ox4q0")
@@ -189,6 +156,7 @@ text = "Menu"
 script = ExtResource("2_j7yda")
 
 [node name="txt_direction" type="RichTextLabel" parent="." unique_id=894730844]
+visible = false
 layout_mode = 0
 offset_left = 633.0
 offset_top = 345.0
@@ -197,6 +165,7 @@ offset_bottom = 428.0
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
+theme_override_fonts/normal_font = ExtResource("5_27ehk")
 theme_override_font_sizes/normal_font_size = 66
 text = "↓"
 fit_content = true
@@ -237,9 +206,11 @@ stream = ExtResource("8_t1xku")
 stream = ExtResource("9_ka0ya")
 volume_db = -3.649
 
-[node name="Consumidor" type="Sprite2D" parent="." unique_id=1663356303]
-position = Vector2(-73, 434)
-texture = ExtResource("11_ppe3r")
+[node name="Arrow" type="Sprite2D" parent="." unique_id=1598240068]
+texture_filter = 1
+position = Vector2(696, 396)
+scale = Vector2(1.6071428, 1.6071428)
+texture = ExtResource("12_27ehk")
 
 [connection signal="pressed" from="button_exit" to="button_exit" method="_on_btn_title_screen_pressed"]
 [connection signal="timeout" from="timer_wrong_play" to="." method="_on_timer_wrong_play_timeout"]

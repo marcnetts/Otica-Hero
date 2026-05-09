@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vvpovb7vn7uc" path="res://screen_title.gd" id="1_lavik"]
 [ext_resource type="Texture2D" uid="uid://toufnt0bvceo" path="res://images/otica dez 2.png" id="2_lavik"]
-[ext_resource type="Texture2D" uid="uid://bl0ptufao8vs5" path="res://images/sprite thuthcucao banner.png" id="3_g7li3"]
+[ext_resource type="Texture2D" uid="uid://bl0ptufao8vs5" path="res://images/sprite banner.png" id="3_g7li3"]
 [ext_resource type="StyleBox" uid="uid://bisq6hsber8j5" path="res://styles/style_hover_button.tres" id="4_evby3"]
 
 [sub_resource type="Gradient" id="Gradient_4hrak"]
@@ -11,37 +11,6 @@ colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lavik"]
 gradient = SubResource("Gradient_4hrak")
-
-[sub_resource type="FontFile" id="FontFile_05l2w"]
-cache/0/variation_coordinates = {}
-cache/0/face_index = 0
-cache/0/embolden = 0.0
-cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
-cache/0/spacing_top = 0
-cache/0/spacing_bottom = 0
-cache/0/spacing_space = 0
-cache/0/spacing_glyph = 0
-cache/0/baseline_offset = 0.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/40/0/ascent = 0.0
-cache/0/40/0/descent = 0.0
-cache/0/40/0/underline_position = 0.0
-cache/0/40/0/underline_thickness = 0.0
-cache/0/40/0/scale = 1.0
-cache/0/50/0/ascent = 0.0
-cache/0/50/0/descent = 0.0
-cache/0/50/0/underline_position = 0.0
-cache/0/50/0/underline_thickness = 0.0
-cache/0/50/0/scale = 1.0
-cache/0/45/0/ascent = 0.0
-cache/0/45/0/descent = 0.0
-cache/0/45/0/underline_position = 0.0
-cache/0/45/0/underline_thickness = 0.0
-cache/0/45/0/scale = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hafda"]
 bg_color = Color(1, 0.7411765, 0.49803922, 1)
@@ -107,7 +76,6 @@ offset_right = 474.6129
 offset_bottom = 414.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = SubResource("FontFile_05l2w")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_hafda")
 theme_override_styles/hover = ExtResource("4_evby3")
@@ -121,7 +89,6 @@ offset_right = 448.0
 offset_bottom = 539.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = SubResource("FontFile_05l2w")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_tpml5")
 theme_override_styles/hover = ExtResource("4_evby3")

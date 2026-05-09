@@ -32,18 +32,22 @@ var tempo = 6000
 var directions_to_score = {
 	"↑": {
 		"vector": Vector2.UP,
+		"rotation": 180,
 		"sprite": load("res://images/character/character-up.png"),
 	},
 	"←": {
 		"vector": Vector2.LEFT,
+		"rotation": 90,
 		"sprite": load("res://images/character/character-left.png"),
 	},
 	"→": {
 		"vector": Vector2.RIGHT,
+		"rotation": 270,
 		"sprite": load("res://images/character/character-right.png"),
 	},
 	"↓": {
 		"vector": Vector2.DOWN,
+		"rotation": 0,
 		"sprite": load("res://images/character/character-down.png"),
 	},
 }
@@ -53,11 +57,13 @@ var current_direction_to_score = "↓"
 
 @export var character: CharacterBody2D
 @export var characterSprite: Sprite2D
+@export var arrowSprite: Sprite2D
 
 var comboJogadasBoas: int
 var coresBoasTxt = ['#18ff03', '#4203ff', '#4203ff', '#ff03ff']
 var txtJogadasBoas = ['Boa!', 'Uuia!', 'Nicee', 'Oloco!', '<3', 'Rapaaiiz', 'Fera!', 'Su-ce-sso!']
 
+var sprite_check = preload("res://appearing_check.tscn")
 var floating_text_scene = preload("res://appearing_text_label.tscn")
 var sprite_silhueta = preload("res://sprite_silhueta.tscn")
 var sprite_consumidor = preload("res://sprite_consumidor.tscn")
@@ -129,7 +135,8 @@ func addScore():
 	VarGlobais.high_score = max(score, VarGlobais.high_score)
 	txt_score_label.text = "%04d" % score
 	novaDirecao()
-	show_text_above_character('✓', posicaoAcimaCaixaSom, false, 40)
+	#show_text_above_character('✓', posicaoAcimaCaixaSom, false, 40)
+	show_check_above_character(posicaoAcimaCaixaSom)
 	if(comboJogadasBoas > 10):
 		show_text_above_character(txtJogadasBoas.pick_random(), posicaoAcimaJogador)
 	if randf() < 0.2:
@@ -142,18 +149,24 @@ func wrongMove():
 	comboJogadasBoas = 0
 	characterSprite.texture = load("res://images/character/character-error.png")
 
+func show_check_above_character(position: Vector2):
+	var check = sprite_check.instantiate()
+	check.global_position = position
+	get_tree().current_scene.add_child(check)
+	
 func show_text_above_character(innerText: String, position: Vector2, wrongMove = false, fontSize = 28):
 	var text = floating_text_scene.instantiate()
 	text.add_theme_font_size_override("normal_font_size", fontSize)
 	text.global_position = position
 	text.push_color(Color("Red") if wrongMove else Color(coresBoasTxt.pick_random()))
-		
 	text.add_text(innerText)
 	get_tree().current_scene.add_child(text)
 
 func novaDirecao():
 	current_direction_to_score = dicionarioSemDadoFiltrado(directions_to_score, current_direction_to_score).keys().pick_random()
 	txt_direction_label.text = current_direction_to_score
+	print(directions_to_score[current_direction_to_score].rotation)
+	arrowSprite.rotation = deg_to_rad(directions_to_score[current_direction_to_score].rotation)
 
 func dicionarioSemDadoFiltrado(dicionario_original: Dictionary, dadoexcluido: String):
 	var filtered = {}

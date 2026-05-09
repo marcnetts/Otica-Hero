@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://wyvogprtx1un"]
+
+[ext_resource type="Texture2D" uid="uid://bbus5etmnrcn0" path="res://images/check.png" id="1_hu2m3"]
+[ext_resource type="Script" uid="uid://bbpaxiuuesrbo" path="res://sprite_check.gd" id="2_y8qnk"]
+
+[node name="Node2D" type="Node2D" unique_id=1880282945]
+
+[node name="Check" type="Sprite2D" parent="." unique_id=265635773]
+texture_filter = 1
+scale = Vector2(0.61538464, 0.6153846)
+texture = ExtResource("1_hu2m3")
+script = ExtResource("2_y8qnk")

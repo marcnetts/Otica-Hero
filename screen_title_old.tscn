@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cxt2mw4t2db8d"]
+
+[ext_resource type="Script" uid="uid://vvpovb7vn7uc" path="res://screen_title.gd" id="1_lavik"]
+[ext_resource type="Texture2D" uid="uid://toufnt0bvceo" path="res://images/otica dez 2.png" id="2_lavik"]
+[ext_resource type="Texture2D" uid="uid://bl0ptufao8vs5" path="res://images/sprite thuthcucao banner.png" id="3_g7li3"]
+
+[sub_resource type="Gradient" id="Gradient_4hrak"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lavik"]
+gradient = SubResource("Gradient_4hrak")
+
+[node name="Title Screen" type="Control" unique_id=2130610540 node_paths=PackedStringArray("txtMaiorPontuacao")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lavik")
+txtMaiorPontuacao = NodePath("")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1617209098]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background3" type="TextureRect" parent="MarginContainer" unique_id=1881410921]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_lavik")
+
+[node name="Background2" type="TextureRect" parent="MarginContainer" unique_id=1477141437]
+modulate = Color(1, 1, 1, 0.6392157)
+layout_mode = 2
+texture = ExtResource("2_lavik")
+
+[node name="SpriteThuthcucaoBanner" type="Sprite2D" parent="." unique_id=1366168425]
+position = Vector2(756, 446.37503)
+scale = Vector2(0.7730326, 0.7730326)
+texture = ExtResource("3_g7li3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=658437778]
+layout_mode = 0
+offset_top = 101.0
+offset_right = 1152.0
+offset_bottom = 238.0
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/normal_font_size = 100
+text = "ÓTICA HERO"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl0ptufao8vs5"
-path="res://.godot/imported/sprite thuthcucao banner.png-330e87f9cf777b0902cb3ae9a41472fc.ctex"
+uid="uid://cwm527cbvft7y"
+path="res://.godot/imported/arrow.png-c10f174082a3fbfbe1894477bdb33238.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sprite thuthcucao banner.png"
-dest_files=["res://.godot/imported/sprite thuthcucao banner.png-330e87f9cf777b0902cb3ae9a41472fc.ctex"]
+source_file="res://images/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-c10f174082a3fbfbe1894477bdb33238.ctex"]
 
 [params]
 

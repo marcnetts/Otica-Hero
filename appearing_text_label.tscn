@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://b03lgibfar4xb"]
 
 [ext_resource type="Script" uid="uid://6pjysq124vrk" path="res://appearing_text_label.gd" id="1_hsoma"]
+[ext_resource type="FontFile" uid="uid://dgd5bpwjixfgb" path="res://OpenSans-VariableFont_wdth,wght.ttf" id="1_i0hmi"]
 
 [node name="RichTextLabel" type="RichTextLabel" unique_id=432666663]
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_fonts/normal_font = ExtResource("1_i0hmi")
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 fit_content = true
