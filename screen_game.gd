@@ -7,11 +7,21 @@ var txt_score_label: RichTextLabel
 @export
 var txt_time_label: RichTextLabel
 @export
+var txt_time_timeout: RichTextLabel
+@export
+var txt_melhor_pontuacao: RichTextLabel
+@export
 var gameTimer: Timer
 @export
 var wrongMoveTimer: Timer
 @export
-var audio: AudioStreamPlayer
+var timer_pessoas_passando: Timer
+@export
+var audio_musica: AudioStreamPlayer
+@export
+var audio_apito: AudioStreamPlayer
+@export
+var button_sair: Button
 
 @export
 var score = 0
@@ -20,11 +30,24 @@ var tempo = 6000
 
 @export
 var directions_to_score = {
-	"↑": Vector2.UP,
-	"←": Vector2.LEFT,
-	"→": Vector2.RIGHT,
-	"↓": Vector2.DOWN,
+	"↑": {
+		"vector": Vector2.UP,
+		"sprite": load("res://images/character/character-up.png"),
+	},
+	"←": {
+		"vector": Vector2.LEFT,
+		"sprite": load("res://images/character/character-left.png"),
+	},
+	"→": {
+		"vector": Vector2.RIGHT,
+		"sprite": load("res://images/character/character-right.png"),
+	},
+	"↓": {
+		"vector": Vector2.DOWN,
+		"sprite": load("res://images/character/character-down.png"),
+	},
 }
+
 @export
 var current_direction_to_score = "↓"
 
@@ -36,54 +59,76 @@ var coresBoasTxt = ['#18ff03', '#4203ff', '#4203ff', '#ff03ff']
 var txtJogadasBoas = ['Boa!', 'Uuia!', 'Nicee', 'Oloco!', '<3', 'Rapaaiiz', 'Fera!', 'Su-ce-sso!']
 
 var floating_text_scene = preload("res://appearing_text_label.tscn")
+var sprite_silhueta = preload("res://styles/sprite_silhueta.tscn")
 
 var posicaoAcimaJogador: Vector2
 var posicaoAcimaCaixaSom = Vector2(697, 351)
+var pessoasPassando: int
 
 func _ready():
 	gameTimer.connect("timeout", _on_gameTimer_timeout)
 	gameTimer.start()
-	posicaoAcimaJogador = Vector2(character.position.x + characterSprite.position.x, 390)
-	audio.play()
+	posicaoAcimaJogador = Vector2(character.position.x + characterSprite.position.x, 340)
+	audio_musica.play()
+	timer_pessoas_passando.connect("timeout", _on_timer_pessoas_passando_timeout)
 
 func _on_gameTimer_timeout():
 	tempo -= 1
-	txt_time_label.text = str(tempo)
+	txt_time_label.text = "%02d" % tempo
 	if(tempo <= 0):
-		gameTimer.stop()
-		audio.stop()
+		pararJogo()
+
+func pararJogo():
+	gameTimer.stop()
+	txt_time_timeout.show()
+	audio_apito.play()
+	if VarGlobais.high_score == score:
+		txt_score_label.text = '[color=00ff00]' + txt_score_label.text + '[/color]'
+		txt_melhor_pontuacao.show()
+	
+	#diminuuui audio
+	var tween = create_tween().tween_property(audio_musica, "volume_db", -80.0, 2.0)
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN)
+	await tween.finished
+	audio_musica.volume_db = 0.0
+	audio_musica.stop()
+	await get_tree().create_timer(2.0).timeout
+	button_sair._on_btn_title_screen_pressed()
 
 func _process(delta):
 	if(tempo > 0 && wrongMoveTimer.is_stopped()):
-		var vetor_personagem := Vector2.ZERO
+		var vetor_personagem := ''
 
-		if Input.is_action_just_pressed("ui_left"):
-			vetor_personagem = Vector2.LEFT
+		if Input.is_action_just_pressed("move_up"):
+			vetor_personagem = '↑'
+		elif Input.is_action_just_pressed("move_left"):
+			vetor_personagem = '←'
+		elif Input.is_action_just_pressed("move_right"):
+			vetor_personagem = '→'
+		elif Input.is_action_just_pressed("move_down"):
+			vetor_personagem = '↓'
 
-		elif Input.is_action_just_pressed("ui_right"):
-			vetor_personagem = Vector2.RIGHT
-
-		elif Input.is_action_just_pressed("ui_up"):
-			vetor_personagem = Vector2.UP
-
-		elif Input.is_action_just_pressed("ui_down"):
-			vetor_personagem = Vector2.DOWN
-
-		if vetor_personagem == directions_to_score[current_direction_to_score]:
-			addScore()
-		elif vetor_personagem != Vector2.ZERO:
-			wrongMove()
+		if vetor_personagem != '':
+			if directions_to_score[vetor_personagem].vector == directions_to_score[current_direction_to_score].vector:
+				addScore()
+			elif vetor_personagem != '':
+				wrongMove()
+			
+			if wrongMoveTimer.is_stopped():
+				characterSprite.texture = directions_to_score[vetor_personagem].sprite
+		
 	if(tempo <= 0):
 		pass
 		#//terminar mais aqui
 
 func addScore():
-	score += 10
+	score += 10 + (5 if comboJogadasBoas >= 10 else 0)
 	VarGlobais.high_score = max(score, VarGlobais.high_score)
 	txt_score_label.text = "%04d" % score
 	novaDirecao()
 	comboJogadasBoas += 1
-	show_text_above_character('✓', posicaoAcimaCaixaSom)
+	show_text_above_character('✓', posicaoAcimaCaixaSom, false, 40)
 	if(comboJogadasBoas > 10):
 		show_text_above_character(txtJogadasBoas.pick_random(), posicaoAcimaJogador)
 
@@ -92,9 +137,11 @@ func wrongMove():
 	show_text_above_character("Whoops!", posicaoAcimaJogador, true)
 	#animação aqui
 	comboJogadasBoas = 0
+	characterSprite.texture = load("res://images/character/character-error.png")
 
-func show_text_above_character(innerText: String, position: Vector2, wrongMove = false):
+func show_text_above_character(innerText: String, position: Vector2, wrongMove = false, fontSize = 28):
 	var text = floating_text_scene.instantiate()
+	text.add_theme_font_size_override("normal_font_size", fontSize)
 	text.global_position = position
 	text.push_color(Color("Red") if wrongMove else Color(coresBoasTxt.pick_random()))
 		
@@ -106,7 +153,7 @@ func show_text_above_character(innerText: String, position: Vector2, wrongMove =
 func novaDirecao():
 	current_direction_to_score = dicionarioSemDadoFiltrado(directions_to_score, current_direction_to_score).keys().pick_random()
 	txt_direction_label.text = current_direction_to_score
-	
+
 func dicionarioSemDadoFiltrado(dicionario_original: Dictionary, dadoexcluido: String):
 	var filtered = {}
 
@@ -115,3 +162,10 @@ func dicionarioSemDadoFiltrado(dicionario_original: Dictionary, dadoexcluido: St
 			filtered[key] = dicionario_original[key]
 	
 	return filtered
+
+func _on_timer_pessoas_passando_timeout():
+	if tempo > 0 and randf() < 0.10:
+		var posicaoEsquerda = randf() > 0.5
+		var npcAndando = sprite_silhueta.instantiate()
+		npcAndando.position = Vector2(-100, get_viewport_rect().size.y - 110)
+		add_child(npcAndando)

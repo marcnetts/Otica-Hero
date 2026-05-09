@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://0y60q1r8h41x" path="res://screen_game.gd" id="1_yla3h"]
 [ext_resource type="Script" uid="uid://yf7x5vfqm1f8" path="res://screen_game_button_exit.gd" id="2_j7yda"]
-[ext_resource type="Texture2D" uid="uid://bl0ptufao8vs5" path="res://images/sprite thuthcucao banner.png" id="2_norob"]
 [ext_resource type="Texture2D" uid="uid://toufnt0bvceo" path="res://images/otica dez 2.png" id="2_t1xku"]
+[ext_resource type="StyleBox" uid="uid://bisq6hsber8j5" path="res://styles/style_hover_button.tres" id="3_ox4q0"]
 [ext_resource type="Texture2D" uid="uid://3g656qi02nnn" path="res://images/caixa_som.png" id="4_ka0ya"]
 [ext_resource type="Script" uid="uid://w34dklkutb7b" path="res://screen_game_character.gd" id="6_6mti6"]
+[ext_resource type="Texture2D" uid="uid://sip5152gg4d8" path="res://images/character/character-idle.png" id="6_ka0ya"]
 [ext_resource type="Texture2D" uid="uid://di0mljoevbun5" path="res://images/speech_bubble.png" id="7_6mti6"]
 [ext_resource type="AudioStream" uid="uid://van6780o0g06" path="res://music/palma_da_bota_undertale.mp3" id="8_t1xku"]
+[ext_resource type="AudioStream" uid="uid://yxubraqou68h" path="res://music/freesound_community-metal-whistle-6121 (mp3cut.net).mp3" id="9_ka0ya"]
 
 [sub_resource type="FontFile" id="FontFile_05l2w"]
 subpixel_positioning = 0
@@ -55,7 +57,7 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_size = 5
 shadow_offset = Vector2(5, 5)
 
-[node name="Game Screen" type="Control" unique_id=2130610540 node_paths=PackedStringArray("txt_direction_label", "txt_score_label", "txt_time_label", "gameTimer", "wrongMoveTimer", "audio", "character", "characterSprite")]
+[node name="Game Screen" type="Control" unique_id=2130610540 node_paths=PackedStringArray("txt_direction_label", "txt_score_label", "txt_time_label", "txt_time_timeout", "txt_melhor_pontuacao", "gameTimer", "wrongMoveTimer", "timer_pessoas_passando", "audio_musica", "audio_apito", "button_sair", "character", "characterSprite")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,12 +68,17 @@ script = ExtResource("1_yla3h")
 txt_direction_label = NodePath("txt_direction")
 txt_score_label = NodePath("txt_pontos_valor")
 txt_time_label = NodePath("txt_tempo_valor")
-gameTimer = NodePath("timer_game")
+txt_time_timeout = NodePath("txt_tempo_timeout")
+txt_melhor_pontuacao = NodePath("txt_melhor_pontuacao")
+gameTimer = NodePath("timer_pessoas_passando")
 wrongMoveTimer = NodePath("timer_wrong_play")
-audio = NodePath("AudioStreamPlayer")
-tempo = 50
+timer_pessoas_passando = NodePath("timer_pessoas_passando")
+audio_musica = NodePath("audio_musica")
+audio_apito = NodePath("audio_apito")
+button_sair = NodePath("button_exit")
+tempo = 60
 character = NodePath("Personagem")
-characterSprite = NodePath("Personagem/SpriteThuthcucaoBanner")
+characterSprite = NodePath("Personagem/Character")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1701575176]
 layout_mode = 0
@@ -129,9 +136,40 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
 theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
 text = "0000"
 fit_content = true
 autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="txt_tempo_timeout" type="RichTextLabel" parent="." unique_id=1807838271]
+visible = false
+layout_mode = 0
+offset_top = 175.0
+offset_right = 1152.0
+offset_bottom = 312.0
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 100
+text = "TEMPOOO!"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="txt_melhor_pontuacao" type="RichTextLabel" parent="." unique_id=797105847]
+visible = false
+layout_mode = 0
+offset_left = 729.0
+offset_top = 84.0
+offset_right = 1145.0
+offset_bottom = 148.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+text = "[rainbow freq=0.2 sat=1.0 val=20]Melhor Pontuação![/rainbow]"
+fit_content = true
 horizontal_alignment = 1
 
 [node name="button_exit" type="Button" parent="." unique_id=1237632083]
@@ -145,6 +183,7 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/font = SubResource("FontFile_05l2w")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_tpml5")
+theme_override_styles/hover = ExtResource("3_ox4q0")
 text = "Menu"
 script = ExtResource("2_j7yda")
 
@@ -167,16 +206,15 @@ position = Vector2(618, 564)
 scale = Vector2(0.14583336, 0.14583334)
 texture = ExtResource("4_ka0ya")
 
-[node name="Personagem" type="CharacterBody2D" parent="." unique_id=714427390 node_paths=PackedStringArray("characterSprite")]
+[node name="Personagem" type="CharacterBody2D" parent="." unique_id=714427390]
 position = Vector2(867, 522)
 motion_mode = 1
 script = ExtResource("6_6mti6")
-characterSprite = NodePath("SpriteThuthcucaoBanner")
 metadata/current_direction_to_score = Vector2(0, 0)
 
-[node name="SpriteThuthcucaoBanner" type="Sprite2D" parent="Personagem" unique_id=2079178106]
-scale = Vector2(0.34788868, 0.34788868)
-texture = ExtResource("2_norob")
+[node name="Character" type="Sprite2D" parent="Personagem" unique_id=1099327693]
+position = Vector2(0, -62)
+texture = ExtResource("6_ka0ya")
 
 [node name="SpeechBubble" type="Sprite2D" parent="." unique_id=875338300]
 position = Vector2(698, 412)
@@ -188,7 +226,14 @@ texture = ExtResource("7_6mti6")
 wait_time = 0.8
 one_shot = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1417042787]
+[node name="timer_pessoas_passando" type="Timer" parent="." unique_id=2073375748]
+wait_time = 0.8
+
+[node name="audio_musica" type="AudioStreamPlayer" parent="." unique_id=1417042787]
 stream = ExtResource("8_t1xku")
+
+[node name="audio_apito" type="AudioStreamPlayer" parent="." unique_id=1403362207]
+stream = ExtResource("9_ka0ya")
+volume_db = -3.649
 
 [connection signal="pressed" from="button_exit" to="button_exit" method="_on_btn_title_screen_pressed"]

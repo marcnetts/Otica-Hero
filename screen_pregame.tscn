@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://cxfj6rw2a67np"]
+
+[ext_resource type="Script" uid="uid://vvpovb7vn7uc" path="res://screen_title.gd" id="1_hoqcd"]
+[ext_resource type="Texture2D" uid="uid://blin6ms5vt20" path="res://images/prescreen.png" id="2_6lpl7"]
+[ext_resource type="StyleBox" uid="uid://bisq6hsber8j5" path="res://styles/style_hover_button.tres" id="2_b1q67"]
+[ext_resource type="Texture2D" uid="uid://3g656qi02nnn" path="res://images/caixa_som.png" id="3_b1q67"]
+
+[sub_resource type="Gradient" id="Gradient_4hrak"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lavik"]
+gradient = SubResource("Gradient_4hrak")
+
+[sub_resource type="FontFile" id="FontFile_05l2w"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/45/0/ascent = 0.0
+cache/0/45/0/descent = 0.0
+cache/0/45/0/underline_position = 0.0
+cache/0/45/0/underline_thickness = 0.0
+cache/0/45/0/scale = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hafda"]
+bg_color = Color(1, 0.7411765, 0.49803922, 1)
+skew = Vector2(0.2, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(5, 6)
+
+[node name="Title Screen" type="Control" unique_id=2130610540]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hoqcd")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1617209098]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="MarginContainer" unique_id=1881410921]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_lavik")
+
+[node name="button_start" type="Button" parent="." unique_id=657185521]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 514.0
+offset_right = 758.0
+offset_bottom = 614.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("FontFile_05l2w")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_hafda")
+theme_override_styles/hover = ExtResource("2_b1q67")
+text = "BORA!"
+
+[node name="Prescreen" type="Sprite2D" parent="." unique_id=869175844]
+position = Vector2(576, 261)
+scale = Vector2(0.8290158, 0.82901555)
+texture = ExtResource("2_6lpl7")
+
+[node name="CaixaSom" type="Sprite2D" parent="." unique_id=1965428831]
+position = Vector2(820.99994, 155)
+scale = Vector2(0.14583336, 0.14583334)
+texture = ExtResource("3_b1q67")
+
+[connection signal="pressed" from="button_start" to="." method="_on_button_start_pressed"]

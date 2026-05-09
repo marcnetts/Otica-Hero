@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://csd11w4kuoknq"]
+
+[ext_resource type="Texture2D" uid="uid://bwe3sqsfq8cy1" path="res://images/silhueta.png" id="1_bd2yt"]
+[ext_resource type="Script" uid="uid://jo7fnd7kxwug" path="res://styles/sprite_silhueta.gd" id="2_enbe2"]
+
+[node name="Silhueta" type="Sprite2D" unique_id=1443681690]
+modulate = Color(1, 1, 1, 0.4)
+scale = Vector2(0.5087912, 0.5087912)
+texture = ExtResource("1_bd2yt")
+script = ExtResource("2_enbe2")

@@ -18,16 +18,16 @@ func _process(delta):
 
 	var dir := Vector2.ZERO
 
-	if Input.is_action_just_pressed("ui_left"):
+	if Input.is_action_just_pressed("move_left"):
 		dir = Vector2.LEFT
 
-	elif Input.is_action_just_pressed("ui_right"):
+	elif Input.is_action_just_pressed("move_right"):
 		dir = Vector2.RIGHT
 
-	elif Input.is_action_just_pressed("ui_up"):
+	elif Input.is_action_just_pressed("move_up"):
 		dir = Vector2.UP
 
-	elif Input.is_action_just_pressed("ui_down"):
+	elif Input.is_action_just_pressed("move_down"):
 		dir = Vector2.DOWN
 
 	if dir != Vector2.ZERO:
