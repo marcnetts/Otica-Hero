@@ -143,7 +143,7 @@ offset_right = 129.0
 offset_bottom = 640.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 25
-text = "v1.0"
+text = "v1.01"
 fit_content = true
 
 [connection signal="pressed" from="button_start" to="." method="_on_button_pregame_pressed"]
