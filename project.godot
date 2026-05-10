@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Game jam 2026 Rhythim"
+config/name="Ótica Hero"
+config/description="Baixada Santista Game Jam 2026"
 run/main_scene="uid://55d62262thhc"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://cj8uqy5pudnb2"
 
 [autoload]
 
