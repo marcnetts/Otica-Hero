@@ -63,10 +63,10 @@ var comboJogadasBoas: int
 var coresBoasTxt = ['#18ff03', '#4203ff', '#4203ff', '#ff03ff']
 var txtJogadasBoas = ['Boa!', 'Uuia!', 'Nicee', 'Oloco!', '<3', 'Rapaaiiz', 'Fera!', 'Su-ce-sso!']
 
-var sprite_check = preload("res://appearing_check.tscn")
-var floating_text_scene = preload("res://appearing_text_label.tscn")
-var sprite_silhueta = preload("res://sprite_silhueta.tscn")
-var sprite_consumidor = preload("res://sprite_consumidor.tscn")
+var sprite_check = preload("res://scene/appearing_check.tscn")
+var floating_text_scene = preload("res://scene/appearing_text_label.tscn")
+var sprite_silhueta = preload("res://scene/sprite_silhueta.tscn")
+var sprite_consumidor = preload("res://scene/sprite_consumidor.tscn")
 
 var posicaoAcimaJogador: Vector2
 var posicaoAcimaCaixaSom = Vector2(697, 351)
