@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ch0ay6lbmcp5w"]
 
-[ext_resource type="Script" uid="uid://vvpovb7vn7uc" path="res://screen_title.gd" id="1_dm20p"]
+[ext_resource type="Script" uid="uid://vvpovb7vn7uc" path="res://scripts/screen_title.gd" id="1_dm20p"]
 [ext_resource type="Texture2D" uid="uid://toufnt0bvceo" path="res://images/otica dez 2.png" id="2_4hrak"]
 [ext_resource type="StyleBox" uid="uid://bisq6hsber8j5" path="res://styles/style_hover_button.tres" id="3_4hrak"]
-[ext_resource type="Script" uid="uid://yf7x5vfqm1f8" path="res://screen_game_button_exit.gd" id="4_4hrak"]
+[ext_resource type="Script" uid="uid://yf7x5vfqm1f8" path="res://scripts/screen_game_button_exit.gd" id="4_4hrak"]
 
 [sub_resource type="Gradient" id="Gradient_dm20p"]
 offsets = PackedFloat32Array(0)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://wyvogprtx1un"]
 
 [ext_resource type="Texture2D" uid="uid://bbus5etmnrcn0" path="res://images/check.png" id="1_hu2m3"]
-[ext_resource type="Script" uid="uid://bbpaxiuuesrbo" path="res://sprite_check.gd" id="2_y8qnk"]
+[ext_resource type="Script" uid="uid://bbpaxiuuesrbo" path="res://scripts/sprite_check.gd" id="2_y8qnk"]
 
 [node name="Node2D" type="Node2D" unique_id=1880282945]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b03lgibfar4xb"]
 
-[ext_resource type="Script" uid="uid://6pjysq124vrk" path="res://appearing_text_label.gd" id="1_hsoma"]
+[ext_resource type="Script" uid="uid://6pjysq124vrk" path="res://scripts/appearing_text_label.gd" id="1_hsoma"]
 [ext_resource type="FontFile" uid="uid://dgd5bpwjixfgb" path="res://OpenSans-VariableFont_wdth,wght.ttf" id="1_i0hmi"]
 
 [node name="RichTextLabel" type="RichTextLabel" unique_id=432666663]

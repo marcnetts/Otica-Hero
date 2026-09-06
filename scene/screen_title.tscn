@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://55d62262thhc"]
 
-[ext_resource type="Script" uid="uid://vvpovb7vn7uc" path="res://screen_title.gd" id="1_lavik"]
+[ext_resource type="Script" uid="uid://vvpovb7vn7uc" path="res://scripts/screen_title.gd" id="1_lavik"]
 [ext_resource type="Texture2D" uid="uid://toufnt0bvceo" path="res://images/otica dez 2.png" id="2_lavik"]
 [ext_resource type="Texture2D" uid="uid://bl0ptufao8vs5" path="res://images/sprite banner.png" id="3_g7li3"]
 [ext_resource type="StyleBox" uid="uid://bisq6hsber8j5" path="res://styles/style_hover_button.tres" id="4_evby3"]
