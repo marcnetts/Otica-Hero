@@ -45,7 +45,7 @@ timer_pessoas_passando = NodePath("timer_pessoas_passando")
 audio_musica = NodePath("audio_musica")
 audio_apito = NodePath("audio_apito")
 button_sair = NodePath("button_exit")
-tempo = 60
+tempo = 50
 character = NodePath("Personagem")
 characterSprite = NodePath("Personagem/Character")
 arrowSprite = NodePath("Arrow")
@@ -194,7 +194,7 @@ texture = ExtResource("7_6mti6")
 [node name="timer_game" type="Timer" parent="." unique_id=2077056384]
 
 [node name="timer_wrong_play" type="Timer" parent="." unique_id=761873712]
-wait_time = 0.8
+wait_time = 0.5
 one_shot = true
 
 [node name="timer_pessoas_passando" type="Timer" parent="." unique_id=2073375748]
