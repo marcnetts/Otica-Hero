@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://toufnt0bvceo" path="res://images/otica dez 2.png" id="2_lavik"]
 [ext_resource type="Texture2D" uid="uid://bl0ptufao8vs5" path="res://images/sprite banner.png" id="3_g7li3"]
 [ext_resource type="StyleBox" uid="uid://bisq6hsber8j5" path="res://styles/style_hover_button.tres" id="4_evby3"]
+[ext_resource type="Script" uid="uid://d2yrw8qkovoli" path="res://scripts/button_focusable.gd" id="5_g7li3"]
 
 [sub_resource type="Gradient" id="Gradient_4hrak"]
 offsets = PackedFloat32Array(0)
@@ -80,6 +81,7 @@ theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_hafda")
 theme_override_styles/hover = ExtResource("4_evby3")
 text = "JOGAR"
+script = ExtResource("5_g7li3")
 
 [node name="button_credits" type="Button" parent="." unique_id=1237632083]
 layout_mode = 0
